@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DV2027 - Diversity Visa Program</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #1a2a1a;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .amharic {
+            font-family: 'Noto Sans Ethiopic', sans-serif;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(26, 42, 26, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #94d892;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #94d892;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #f2eeee;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #94d892;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #94d892;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .apply-btn {
+            background: linear-gradient(135deg, #94d892, #7ac478);
+            color: #1a2a1a;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(148, 216, 146, 0.4);
+        }
+
+        .apply-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(148, 216, 146, 0.6);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(37, 44, 53, 0.7), rgba(28, 29, 30, 0.9)), 
+                url('https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            padding: 0 20px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #94d892, #c8f0c7);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #e9ecef;
+        }
+
+        .hero .amharic-subtitle {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+            color: #e0ddc1;
+            background: rgba(26, 42, 26, 0.7);
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+            border: 1px solid #94d892;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .cta-btn {
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, #94d892, #7ac478);
+            color: #1a2a1a;
+            border: none;
+            box-shadow: 0 4px 15px rgba(148, 216, 146, 0.4);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: #94d892;
+            border: 2px solid #94d892;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(148, 216, 146, 0.6);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 50px;
+            background-color: #223322;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            font-size: 2.5rem;
+            color: #94d892;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background: rgba(148, 216, 146, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(148, 216, 146, 0.3);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(148, 216, 146, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #94d892;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #c8f0c7;
+        }
+
+        .feature-card p {
+            color: #c8d8c8;
+            line-height: 1.6;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 100px 50px;
+            background-color: #1a2a1a;
+            text-align: center;
+        }
+
+        .price-card {
+            background: linear-gradient(135deg, #223322, #2a3f2a);
+            border-radius: 20px;
+            padding: 50px 30px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(148, 216, 146, 0.3);
+        }
+
+        .price-card h3 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #ffeb3b;
+        }
+
+        .price-amount {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: #94d892;
+            margin: 20px 0;
+        }
+
+        .price-note {
+            color: #c8d8c8;
+            font-size: 1rem;
+            margin-top: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a2a1a;
+            padding: 50px;
+            text-align: center;
+            border-top: 1px solid rgba(148, 216, 146, 0.3);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: #c8d8c8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #94d892;
+        }
+
+        .copyright {
+            color: #94d892;
+            font-size: 0.9rem;
+        }
+
+        /* Animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.4rem;
+            }
+
+            .hero .amharic-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .features, .pricing {
+                padding: 60px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">DV2027</div>
+        <div class="nav-links">
+            <a href="#" class="active">Home</a>
+            <a href="instruction.html">DV2027 Instruction</a>
+            <a href="https://t.me/+2HKSrAqe3l0zMGQ8" class="apply-btn">Apply Now</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <h1>Diversity Visa Program 2027</h1>
+           
+            <div class="amharic amharic-subtitle">
+                ዲቪ 2027  በቁርስ ዋጋ እንሞላለን!<br>
+                እርሶ አስፈላጊውን መረጃ ይሰጡናል እኛ ወደ ዕድሎ እናደርሶታለን።
+            </div>
+            <div class="cta-buttons">
+                <a href="instruction.html" class="cta-btn primary-btn">View Instructions</a>
+                <a href="https://t.me/+2HKSrAqe3l0zMGQ8" class="cta-btn secondary-btn">Apply Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Why Apply for DV2027?</h2>
+        <div class="features-grid">
+            <div class="feature-card floating">
+                <div class="feature-icon">
+                    <i class="fas fa-passport"></i>
+                </div>
+                <h3>Permanent Residency</h3>
+                <p>የዲቪ 2027 ባለ-ዕድለኛ ከሆኑ በአሜሪካን ሃገር ቋሚ ነዋሪ ሆነው የመኖር ፣ የመስራት እና የመማር ፈቃድ ያስገኝሎታል።</p>
+            </div>
+            <div class="feature-card floating" style="animation-delay: 0.5s;">
+                <div class="feature-icon">
+                    <i class="fas fa-globe-americas"></i>
+                </div>
+                <h3>Global Opportunity</h3>
+                <p>የ ዳይቨርሲቲ ቪዛ ፕሮግራም 55,000 የኢሚግራንት ቪዛ ዕድልን ያካተተ በዓለም ዙርያ ዝቅተኛ የስደተኞች ፍልሰትን በ አሜሪካን ሃገር ላላቸው ሃገራት የተመቻቸ መልካም ዕድል ነው ::</p>
+            </div>
+            <div class="feature-card floating" style="animation-delay: 1s;">
+                <div class="feature-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3>Family Inclusion</h3>
+                <p>የትዳር አጋራቸውን እና ከ 21 ዓመት በታች ያሉ ያላገቡ ልጆቻቸውን በማካተት ዲቪ ሞልተው ዕድለኛ የሆኑ ካሉ ባለዕድለኛው ወደ አሜሪካን ሃገር የሞሉዋቸውን ቤተሰቦቻቸውን ይዘው እንዲገቡ ይፈቀድላቸዋል።</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <h2 class="section-title">Affordable Service</h2>
+        <div class="price-card floating">
+            <h3>Complete Application Assistance</h3>
+            <div class="price-amount">400 ETB</div>
+            <p>We help you complete your DV2027 application correctly and maximize your chances of selection.</p>
+            <p class="price-note">አገልግሎታችን በ400 ብር ብቻ!</p>
+            <a href="https://t.me/+2HKSrAqe3l0zMGQ8" class="cta-btn primary-btn" style="margin-top: 30px;">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#">Home</a>
+            <a href="instruction.html">Instructions</a>
+            <a href="https://t.me/+2HKSrAqe3l0zMGQ8">Apply</a>
+            
+        </div>
+        <p class="copyright">© 2025 DV2027 Application Portal. This site is not affiliated with the U.S. Government.</p>
+    </footer>
+
+    <script>
+        // Navigation scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.padding = '15px 50px';
+                nav.style.background = 'rgba(26, 42, 26, 0.98)';
+            } else {
+                nav.style.padding = '20px 50px';
+                nav.style.background = 'rgba(26, 42, 26, 0.95)';
+            }
+        });
+    </script>
+</body>
+</html>
